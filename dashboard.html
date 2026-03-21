@@ -9,24 +9,6 @@
   <h1>Mes succès</h1>
   <ul id="achievementsList"></ul>
 
-
   <script src="main.js"></script>
-  <script>
-    async function loadAchievements() {
-      const res = await fetch('/dashboard');
-      const achievements = await res.json();
-      const list = document.getElementById('achievementsList');
-      list.innerHTML = '';
-
-      achievements.forEach(a => {
-        const li = document.createElement('li');
-        li.textContent = `${a.title} - ${a.description}`;
-        li.style.color = a.validated ? 'black' : 'gray';
-        li.style.opacity = a.validated ? 1 : 0.5;
-        list.appendChild(li);
-      });
-    }
-    loadAchievements();
-  </script>
 </body>
 </html>
