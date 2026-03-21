@@ -1,86 +1,103 @@
-// Login
-document.getElementById("loginForm")?.addEventListener("submit", async (e) => {
+// ======== UTILISATEURS =========
+const USERS_KEY = "users";
+const ACHIEVEMENTS_KEY = "achievements";
+const UNLOCKED_KEY = "unlockedAchievements";
+
+// Admin hardcodé
+const ADMIN_USERNAME = "AdminMaster";
+const ADMIN_PASSWORD = "SuperSecret123";
+
+// --- Connexion / inscription ---
+document.getElementById("signupForm")?.addEventListener("submit", (e)=>{
   e.preventDefault();
-  const formData = new FormData(e.target);
-  const res = await fetch("/login", { method:"POST", body: new URLSearchParams(formData) });
-  const msg = await res.text();
-  alert(msg);
-  if(res.ok){
-    if(msg.includes("Admin")) window.location.href = 'admin.html';
-    else window.location.href = 'dashboard.html';
+  const username = document.getElementById("signupUsername").value.trim();
+  let users = JSON.parse(localStorage.getItem(USERS_KEY)||"[]");
+  if(users.includes(username)){ alert("Utilisateur existant"); return; }
+  users.push(username);
+  localStorage.setItem(USERS_KEY, JSON.stringify(users));
+  localStorage.setItem("currentUser", username);
+  alert("Inscription réussie !");
+  window.location.href = "dashboard.html";
+});
+
+document.getElementById("loginForm")?.addEventListener("submit", (e)=>{
+  e.preventDefault();
+  const username = document.getElementById("loginUsername").value.trim();
+  if(username === ADMIN_USERNAME){
+    const password = prompt("Mot de passe admin ?");
+    if(password!==ADMIN_PASSWORD){ alert("Mot de passe incorrect"); return; }
+    localStorage.setItem("currentUser", ADMIN_USERNAME);
+    alert("Connexion admin réussie !");
+    window.location.href = "admin.html";
+    return;
   }
+  let users = JSON.parse(localStorage.getItem(USERS_KEY)||"[]");
+  if(!users.includes(username)){ alert("Utilisateur non trouvé"); return; }
+  localStorage.setItem("currentUser", username);
+  window.location.href = "dashboard.html";
 });
 
-// Signup
-document.getElementById("signupForm")?.addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const formData = new FormData(e.target);
-  const res = await fetch("/signup", { method:"POST", body: new URLSearchParams(formData) });
-  const msg = await res.text();
-  alert(msg);
-  if(res.ok) window.location.href = 'dashboard.html';
-});
+// ======== ACHIEVEMENTS ========
+let achievements = JSON.parse(localStorage.getItem(ACHIEVEMENTS_KEY)||"[]");
 
-// Dashboard
-async function loadAchievements() {
-  const res = await fetch('/dashboard');
-  if(res.status === 401) return alert("Veuillez vous connecter !");
-  const achievements = await res.json();
-  const list = document.getElementById('achievementsList');
+// Affichage des succès sur dashboard
+function displayAchievements(){
+  const user = localStorage.getItem("currentUser");
+  if(!user || user===ADMIN_USERNAME) return;
+
+  const unlocked = JSON.parse(localStorage.getItem(UNLOCKED_KEY)||"{}");
+  const userUnlocked = unlocked[user]||[];
+
+  const list = document.getElementById("achievementsList");
   if(!list) return;
-  list.innerHTML = '';
+  list.innerHTML = "";
   achievements.forEach(a=>{
-    const li = document.createElement('li');
-    li.textContent = `${a.title} - ${a.description}`;
-    li.style.color = a.validated ? 'black' : 'gray';
-    li.style.opacity = a.validated ? 1 : 0.5;
+    const li = document.createElement("li");
+    li.textContent = `${a.title} - ${userUnlocked.includes(a.code)?a.description:"???"}`;
+    li.style.color = userUnlocked.includes(a.code)?"black":"gray";
+    li.style.opacity = userUnlocked.includes(a.code)?1:0.5;
     list.appendChild(li);
   });
 }
-loadAchievements();
+displayAchievements();
 
-// Admin
-async function loadUsers() {
-  const res = await fetch('/admin/users');
-  if(res.status === 403) return;
-  const users = await res.json();
-  const list = document.getElementById('usersList');
+// Débloquer via code
+document.getElementById("submitCode")?.addEventListener("click", ()=>{
+  const code = document.getElementById("codeInput").value.trim();
+  const user = localStorage.getItem("currentUser");
+  if(!user){ alert("Veuillez vous connecter"); return; }
+  const found = achievements.find(a=>a.code===code);
+  if(!found){ alert("Code invalide"); return; }
+
+  let unlocked = JSON.parse(localStorage.getItem(UNLOCKED_KEY)||"{}");
+  if(!unlocked[user]) unlocked[user] = [];
+  if(unlocked[user].includes(code)){ alert("Vous avez déjà ce succès !"); return; }
+  unlocked[user].push(code);
+  localStorage.setItem(UNLOCKED_KEY, JSON.stringify(unlocked));
+  alert(`Succès débloqué : ${found.title}`);
+  displayAchievements();
+});
+
+// ======== ADMIN ========
+function displayAdmin(){
+  const list = document.getElementById("allAchievements");
   if(!list) return;
-  list.innerHTML='';
-  users.forEach(u=>{
-    const li = document.createElement('li');
-    li.textContent=`ID: ${u.id} - Pseudo: ${u.username}`;
-    li.style.cursor="pointer";
-    li.onclick=()=>loadAchievementsForUser(u.id);
+  list.innerHTML = "";
+  achievements.forEach(a=>{
+    const li = document.createElement("li");
+    li.textContent = `${a.title} - ${a.description} - code: ${a.code}`;
     list.appendChild(li);
   });
 }
 
-async function loadAchievementsForUser(userId){
-  const res = await fetch('/allAchievements');
-  const allAchievements = await res.json();
-  const userRes = await fetch('/dashboard');
-  const userAchievements = await userRes.json();
-  const userValidatedIds = userAchievements.map(a=>a.id);
+document.getElementById("addAchievement")?.addEventListener("click", ()=>{
+  const title = document.getElementById("newTitle").value.trim();
+  const desc = document.getElementById("newDesc").value.trim();
+  const code = document.getElementById("newCode").value.trim();
+  if(!title||!desc||!code){ alert("Remplissez tous les champs"); return; }
+  achievements.push({title, description: desc, code});
+  localStorage.setItem(ACHIEVEMENTS_KEY, JSON.stringify(achievements));
+  displayAdmin();
+});
 
-  const container=document.getElementById('achievementsManagement');
-  if(!container) return;
-  container.innerHTML='';
-  allAchievements.forEach(a=>{
-    const div=document.createElement('div');
-    const validated = userValidatedIds.includes(a.id);
-    div.innerHTML=`${a.title} - ${validated ? a.description : (a.hidden_description?'???':a.description)}
-      <button onclick="toggleAchievement(${userId},${a.id},${validated})">${validated?'Dévalider':'Valider'}</button>`;
-    container.appendChild(div);
-  });
-}
-
-async function toggleAchievement(userId,achievementId,has){
-  const url = has ? '/admin/remove' : '/admin/award';
-  const res = await fetch(url, { method:'POST', body: new URLSearchParams({userId,achievementId}) });
-  alert(await res.text());
-  loadUsers();
-}
-
-// Lancer admin si admin.html
-loadUsers();
+displayAdmin();
