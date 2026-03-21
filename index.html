@@ -2,24 +2,18 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>Connexion / Inscription</title>
-<link rel="stylesheet" href="style.css">
+<title>Succès</title>
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<h1>Connexion / Inscription</h1>
+<h1>Mes succès</h1>
 
-<form id="loginForm">
-  <input type="text" id="loginUsername" placeholder="Pseudo" required>
-  <button type="submit">Connexion</button>
-</form>
+<ul id="achievementsList"></ul>
 
-<hr>
+<h2>Entrer un code pour débloquer un succès</h2>
+<input type="text" id="codeInput" placeholder="Entrez le code du succès">
+<button id="submitCode">Débloquer le succès</button>
 
-<form id="signupForm">
-  <input type="text" id="signupUsername" placeholder="Pseudo" required>
-  <button type="submit">Inscription</button>
-</form>
-
-<script src="main.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>
