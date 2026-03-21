@@ -6,13 +6,25 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h1>Mes succès</h1>
 
-<ul id="achievementsList"></ul>
+<!-- Image en haut -->
+<div id="topImageContainer">
+  <img src="https://via.placeholder.com/1200x200.png?text=Bienvenue+! " alt="Image en haut" id="topImage">
+</div>
 
-<h2>Entrer un code pour débloquer un succès</h2>
-<input type="text" id="codeInput" placeholder="Entrez le code du succès">
-<button id="submitCode">Débloquer le succès</button>
+<div class="header">
+  <h1>Mes succès</h1>
+  <div class="code-zone">
+    <input type="text" id="codeInput" placeholder="Entrez le code du succès">
+    <button id="submitCode">Débloquer</button>
+    <button id="toggleDark">🌙 Mode sombre</button>
+  </div>
+</div>
+
+<div id="achievementsContainer" class="grid"></div>
+
+<!-- Juste pour créer une grande page pour tester le scroll -->
+<div style="height:1000px;"></div>
 
 <script src="main.js"></script>
 </body>
