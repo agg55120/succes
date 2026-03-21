@@ -4,3 +4,4 @@ form { display:flex; flex-direction:column; gap:10px; margin-bottom:20px; }
 input, button { padding:10px; font-size:16px; }
 button { cursor:pointer; }
 ul { list-style:none; padding:0; }
+li { margin-bottom:5px; }
