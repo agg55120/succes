@@ -8,13 +8,15 @@
 <body>
 <h1>Panel Admin</h1>
 
-<h2>Liste des utilisateurs</h2>
-<ul id="usersList"></ul>
-
 <h2>Gérer les succès</h2>
-<div id="achievementsManagement">
-<p>Cliquez sur un utilisateur pour voir et gérer ses succès</p>
+<div>
+  <label>Titre du succès : <input type="text" id="newTitle"></label><br>
+  <label>Description : <input type="text" id="newDesc"></label><br>
+  <label>Code unique : <input type="text" id="newCode"></label><br>
+  <button id="addAchievement">Ajouter succès</button>
 </div>
+
+<ul id="allAchievements"></ul>
 
 <script src="main.js"></script>
 </body>
