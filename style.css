@@ -1,6 +1,92 @@
-body { font-family: Arial; max-width:800px; margin:50px auto; padding:20px; background:#f0f0f0; }
-h1,h2 { text-align:center; }
-input, button { padding:10px; font-size:16px; margin:5px 0; }
-button { cursor:pointer; }
-ul { list-style:none; padding:0; }
-li { margin-bottom:5px; }
+body {
+  font-family: Arial;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #f0f0f0;
+  color: #000;
+  transition: background 0.3s, color 0.3s;
+}
+
+body.dark {
+  background: #121212;
+  color: #f0f0f0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.code-zone input {
+  padding: 6px;
+  font-size: 14px;
+}
+
+.code-zone button {
+  padding: 6px 10px;
+  margin-left: 5px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* Image en haut */
+#topImageContainer {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  z-index: 100;
+  background-color: #f0f0f0;
+  transition: background-color 0.3s;
+}
+
+body.dark #topImageContainer {
+  background-color: #121212;
+}
+
+#topImageContainer img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: opacity 0.3s, filter 0.3s;
+}
+
+/* Grid des succès */
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+.achievement {
+  display: flex;
+  align-items: center;
+  background: #ddd;
+  border-radius: 10px;
+  padding: 10px;
+  width: 180px;
+  transition: all 0.3s;
+}
+
+.achievement.unlocked {
+  background: #a0e3a0;
+}
+
+.achievement img, .achievement .emoji {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  font-size: 30px;
+}
+
+.achievement .content {
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+}
