@@ -1,6 +1,6 @@
 // ======== SUCCÈS ========
 const achievements = [
-  { title: "Premier succès", description: "Félicitations, vous avez débloqué le premier succès !", code: "ABC123", icon: "🏆" },
+  { title: "toucher le nean", description: "vous avez toucher quelque chose que vous ne devier pas", code: "895214", icon: "https://img.icons8.com/?size=100&id=EDlqOuNnwBFU&format=png&color=000000" },
   { title: "Explorateur", description: "Vous avez exploré toutes les zones !", code: "EXPLORE42", icon: "🧭" },
   { title: "Maîtrise du jeu", description: "Vous avez complété tous les défis !", code: "MASTER2026", icon: "⚡" },
   { title: "Débutant courageux", description: "Vous avez essayé pour la première fois !", code: "BEGINNER01", icon: "💪" },
