@@ -1,10 +1,10 @@
 // ======== SUCCÈS ========
 const achievements = [
   { title: "toucher le nean", description: "vous avez toucher quelque chose que vous ne devier pas", code: "895214", icon: "https://img.icons8.com/?size=100&id=EDlqOuNnwBFU&format=png&color=000000" },
-  { title: "Explorateur", description: "Vous avez exploré toutes les zones !", code: "EXPLORE42", icon: "🧭" },
-  { title: "Maîtrise du jeu", description: "Vous avez complété tous les défis !", code: "MASTER2026", icon: "⚡" },
-  { title: "Débutant courageux", description: "Vous avez essayé pour la première fois !", code: "BEGINNER01", icon: "💪" },
-  { title: "Secret bien gardé", description: "Vous avez trouvé un secret !", code: "SECRET99", icon: "🔒" },
+  { title: "parler a la paria", description: "vous avez parler a V1CTØR1Δ LUC14NØ", code: "541823", icon: "https://img.icons8.com/?size=100&id=AlkHRCZPpIdm&format=png&color=000000" },
+  { title: "parler a l'agent 76", description: "vous lui avez parler", code: "767676", icon: "https://img.icons8.com/?size=100&id=PSYB5B3EHx6s&format=png&color=000000" },
+  { title: "parler a l'agent secret", description: "???", code: "???", icon: "https://img.icons8.com/?size=100&id=33452&format=png&color=000000" },
+  { title: "vous avez vus ?", description: "etre divin , non pire", code: "87578484174", icon: "https://img.icons8.com/?size=100&id=124346&format=png&color=000000" },
 ];
 
 const UNLOCKED_KEY = "unlockedAchievements";
