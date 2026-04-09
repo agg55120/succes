@@ -71,7 +71,7 @@ toggleDark.addEventListener("click", () => {
   document.body.classList.toggle("dark");
   // Changer l'image selon le mode
   if(document.body.classList.contains("dark")){
-    topImage.src = "https://via.placeholder.com/1200x200/222222/ffffff.png?text=Mode+sombre";
+    topImage.src = "Design sans titre(1).png";
   } else {
     topImage.src = "Capture d'écran 2026-04-09 195652.png";
   }
