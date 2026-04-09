@@ -73,7 +73,7 @@ toggleDark.addEventListener("click", () => {
   if(document.body.classList.contains("dark")){
     topImage.src = "https://via.placeholder.com/1200x200/222222/ffffff.png?text=Mode+sombre";
   } else {
-    topImage.src = "https://png.pngtree.com/thumb_back/fh260/background/20240522/pngtree-abstract-cloudy-background-beautiful-natural-streaks-of-sky-and-clouds-red-image_15684333.jpg";
+    topImage.src = "Capture d'écran 2026-04-09 195652.png";
   }
 });
 
