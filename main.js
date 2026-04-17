@@ -7,7 +7,7 @@ const achievements = [
   { title: "vous avez vus ?", description: "etre divin , non pire", code: "87578484174", icon: "https://img.icons8.com/?size=100&id=124346&format=png&color=000000" },
   { title: "bizzard", description: "tu a trouver 1 anomalie de faille", code: "845762", icon: "https://img.icons8.com/?size=100&id=XKEluC8mPaFl&format=png&color=000000" },
   { title: "arme etrange", description: "tu a trouver 1 anormale", code: "15284384", icon: "https://img.icons8.com/?size=100&id=37832&format=png&color=000000" },
-  { title: "encore un bunker ?", description: "c'est peut pas un bunker", code: "45186312", icon: "https://img.icons8.com/?size=100&id=VCmAXfBaxpPn&format=png&color=000000" },
+  { title: "encore un bunker ?", description: "c'est peut-etre pas un bunker", code: "45186312", icon: "https://img.icons8.com/?size=100&id=VCmAXfBaxpPn&format=png&color=000000" },
   { title: "bizzard 2", description: "tu a trouver une autre anomalie de faille", code: "1651946", icon: "https://img.icons8.com/?size=100&id=XKEluC8mPaFl&format=png&color=000000" },
 ];
 
