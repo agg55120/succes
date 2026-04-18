@@ -9,6 +9,8 @@ const achievements = [
   { title: "arme etrange", description: "tu a trouver un objet anormale", code: "15284384", icon: "https://img.icons8.com/?size=100&id=37832&format=png&color=000000" },
   { title: "encore un bunker ?", description: "c'est peut-etre pas un bunker", code: "45186312", icon: "https://img.icons8.com/?size=100&id=VCmAXfBaxpPn&format=png&color=000000" },
   { title: "bizzard 2", description: "tu a trouver une autre anomalie de faille", code: "1651946", icon: "https://img.icons8.com/?size=100&id=XKEluC8mPaFl&format=png&color=000000" },
+  { title: "arme geler", description: "tu a trouver la lame de l'infini", code: "18446287", icon: "https://img.icons8.com/?size=100&id=8pSMi8yCrUbp&format=png&color=000000" },
+  { title: "tombo ?", description: "tu a trouver un acces a une zone bien profonde", code: "4851216", icon: "https://img.icons8.com/?size=100&id=BlUtRa4jXPkT&format=png&color=000000" },
 ];
 
 const UNLOCKED_KEY = "unlockedAchievements";
