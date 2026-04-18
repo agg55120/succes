@@ -11,6 +11,7 @@ const achievements = [
   { title: "bizzard 2", description: "tu a trouver une autre anomalie de faille", code: "1651946", icon: "https://img.icons8.com/?size=100&id=XKEluC8mPaFl&format=png&color=000000" },
   { title: "arme geler", description: "tu a trouver la lame de l'infini", code: "18446287", icon: "https://img.icons8.com/?size=100&id=8pSMi8yCrUbp&format=png&color=000000" },
   { title: "tombo ?", description: "tu a trouver un acces a une zone bien profonde", code: "4851216", icon: "https://img.icons8.com/?size=100&id=BlUtRa4jXPkT&format=png&color=000000" },
+  { title: "le veritable chef", description: "tu a tuer tout les chef et est devenu le veritable chef", code: "874185", icon: "https://img.icons8.com/?size=100&id=1lpWPmBGoRsk&format=png&color=000000" },
 ];
 
 const UNLOCKED_KEY = "unlockedAchievements";
